@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock title %}
+{% block start %}
+
+
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">FIRST NAME</th>
+        <th scope="col">LAST NAME</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">DESIGNATION</th>
+        <th scope="col">PHONE NO.</th>
+      </tr>
+    </thead>
+    {% for i in emp %}
+    <tbody>
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{i.first_name}}</td>
+        <td>{{i.last_name}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.position}}</td>
+        <td>{{i.phone}}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+
+
+{% endblock %}

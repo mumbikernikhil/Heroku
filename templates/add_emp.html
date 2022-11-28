@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Employee
+{% endblock title %}
+{% block start %}
+
+<div class="container mb-2">
+    <div class="row">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+            <h3 class="text-white bg-dark text-center py-1 px1">Add Employee</h3>
+
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                <strong><strong> {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control mt-2" name="first_name" placeholder="Enter First Name" required>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control mt-2" name="last_name" placeholder="Enter Last Name" required>
+              </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control mt-2" name="email" placeholder="Email id" required>
+                </div>
+
+                <div class="form-group">
+                  <input type="number" class="form-control mt-2" name="phone" placeholder="Phone Number" required>
+              </div>
+
+                <div class="form-group">
+                    <select class="form-control mt-2" id="plan" name="position" required>
+                        <option selected>Designation</option>
+                        {% for i in position %}
+                        <option value="{{i.name}}">{{i.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-warning mt-2" type="submit">Add</button>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+
+{% endblock %}

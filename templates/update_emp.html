@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Employee
+{% endblock title %}
+{% block start %}
+
+<div class="container mb-2">
+    <div class="row">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+            <h3 class="text-white bg-dark text-center py-1 px1">Update Employee</h3>
+
+            <form action="/update_emp/{{emp.id}}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control mt-2" value="{{emp.first_name}}" name="first_name" placeholder="Enter First Name" required>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control mt-2" value="{{emp.last_name}}" name="last_name" placeholder="Enter Last Name" required>
+              </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control mt-2" value="{{emp.email}}" name="email" placeholder="Email id" required>
+                </div>
+
+                <div class="form-group">
+                  <input type="number" class="form-control mt-2" value="{{emp.phone}}" name="phone" placeholder="Phone Number" required>
+              </div>
+
+                <div class="form-group">
+                    <select class="form-control mt-2" id="plan" name="position" required>
+                        <option selected>{{emp.position}}</option>
+                        {% for i in position %}
+                        <option>{{i.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-warning mt-2" type="submit">Update</button>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+
+{% endblock %}
